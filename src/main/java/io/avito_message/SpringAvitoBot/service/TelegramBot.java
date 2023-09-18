@@ -1,6 +1,7 @@
 package io.avito_message.SpringAvitoBot.service;
 
 
+import com.vdurmont.emoji.EmojiParser;
 import io.avito_message.SpringAvitoBot.config.BotConfig;
 import io.avito_message.SpringAvitoBot.model.User;
 import io.avito_message.SpringAvitoBot.model.UserRepository;
@@ -112,7 +113,7 @@ public class TelegramBot  extends TelegramLongPollingBot {
 
     private void startCommandReceived(long chatId, String name)  {
 
-            String answer = "Hi, " + name + ", nice to meet you!";
+            String answer = EmojiParser.parseToUnicode("Hi, " + name + ", nice to meet you!" + " :blush: ");
             log.info("Replied to user " + name);
 
             sendMessage(chatId, answer);
